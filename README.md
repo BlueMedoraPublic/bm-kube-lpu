@@ -1,9 +1,10 @@
-# Desciption
+# Description
 This repository contains the configuration and commands required to
 monitor Kubernetes clusters with Bluemedora's products.
 
 ## Usage
-***Prepare Kubernetes***
+
+#### Prepare Kubernetes
 1) Make sure the apiserver has been started with `--authorization-mode=RBAC`
 
 2) If you have to change your configuration in order to enable this you will also need to pass `--authorization-rbac-super-user=admin` replacing 'admin' with whatever your admin account is.
@@ -12,7 +13,7 @@ monitor Kubernetes clusters with Bluemedora's products.
 
 4) You will need to restart the apiserver if you had to update the configuration to enable this.
 
-***Deploy LPU***
+#### Deploy LPU
 Deploy and retrieve the bearer token
 ```
 kubectl create -f bluemedora-lpu/
