@@ -1,0 +1,16 @@
+kind: Role
+# kubernetes versions before 1.8.0 should use rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  namespace: kube-system
+  name: bluemedora-monitoring-role
+rules:
+- apiGroups: [""]
+  resources:
+  - pods
+  - nodes
+  verbs: ["get"]
+- apiGroups: ["extensions"]
+  resources:
+  - deployments
+  verbs: ["get"]
