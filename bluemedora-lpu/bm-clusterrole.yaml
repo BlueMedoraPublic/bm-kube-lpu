@@ -1,5 +1,5 @@
 kind: ClusterRole
-apiVersion: rbac.authorization.k8s.io/v1
+apiVersion: rbac.authorization.k8s.io/v1beta1
 # kubernetes versions before 1.8.0 should use rbac.authorization.k8s.io/v1beta1
 metadata:
   name: bluemedora-monitoring
@@ -7,6 +7,9 @@ rules:
 - apiGroups: [""]
   resources:
   - nodes
+  - nodes/stats
+  - nodes/spec
+  - nodes/metrics
   - pods
   - services
   - resourcequotas
@@ -16,6 +19,7 @@ rules:
   - persistentvolumes
   - namespaces
   - endpoints
+  - events
   verbs: ["get", "list", "watch"]
 - apiGroups: ["extensions"]
   resources:
@@ -36,6 +40,5 @@ rules:
   resources:
   - horizontalpodautoscalers
   verbs: ["get", "list", "watch"]
-- nonResourceURLs: ["/healthz", "/healthz/*"] # '*' in a nonResourceURL is a suffix glob match
+- nonResourceURLs: ["/metrics", "/healthz", "/healthz/*"] # '*' in a nonResourceURL is a suffix glob match
   verbs: ["get", "post"]
-
