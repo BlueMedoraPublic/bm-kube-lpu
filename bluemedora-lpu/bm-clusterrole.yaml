@@ -7,6 +7,9 @@ rules:
 - apiGroups: [""]
   resources:
   - nodes
+  - nodes/stats
+  - nodes/spec
+  - nodes/metrics
   - pods
   - services
   - resourcequotas
@@ -38,4 +41,3 @@ rules:
   verbs: ["get", "list", "watch"]
 - nonResourceURLs: ["/healthz", "/healthz/*"] # '*' in a nonResourceURL is a suffix glob match
   verbs: ["get", "post"]
-
