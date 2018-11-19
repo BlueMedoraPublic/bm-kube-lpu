@@ -19,7 +19,6 @@ rules:
   - persistentvolumes
   - namespaces
   - endpoints
-  - events
   verbs: ["get", "list", "watch"]
 - apiGroups: ["extensions"]
   resources:
@@ -40,5 +39,5 @@ rules:
   resources:
   - horizontalpodautoscalers
   verbs: ["get", "list", "watch"]
-- nonResourceURLs: ["/metrics", "/healthz", "/healthz/*"] # '*' in a nonResourceURL is a suffix glob match
+- nonResourceURLs: ["/healthz", "/healthz/*"] # '*' in a nonResourceURL is a suffix glob match
   verbs: ["get", "post"]
