@@ -19,6 +19,7 @@ rules:
   - persistentvolumes
   - namespaces
   - endpoints
+  - events
   verbs: ["get", "list", "watch"]
 - apiGroups: ["extensions"]
   resources:
