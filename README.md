@@ -4,6 +4,26 @@ monitor Kubernetes clusters with Bluemedora's products.
 
 ## Usage
 
+The process below should work for most customers. 
+1) Verify you are pointed to the correct cluster and your kubectl environment is setup properly
+```sh
+kubectl cluster-info
+```
+2) Setup the LPU service account and permissions:
+```sh
+kubectl apply -f https://raw.githubusercontent.com/BlueMedoraPublic/bm-kube-lpu/master/bluemedora-lpu/bm-clusterrole.yaml
+kubectl apply -f https://raw.githubusercontent.com/BlueMedoraPublic/bm-kube-lpu/master/bluemedora-lpu/bm-clusterrolebinding.yaml
+kubectl apply -f https://raw.githubusercontent.com/BlueMedoraPublic/bm-kube-lpu/master/bluemedora-lpu/bm-role.yaml
+kubectl apply -f https://raw.githubusercontent.com/BlueMedoraPublic/bm-kube-lpu/master/bluemedora-lpu/bm-rolebinding.yaml
+kubectl apply -f https://raw.githubusercontent.com/BlueMedoraPublic/bm-kube-lpu/master/bluemedora-lpu/bm-serviceaccount.yaml
+```
+2) Otabin the bearer token for the service account to use when setting up the source within Bindplane or vROps
+```sh
+kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep bluemedora | awk '{print $1}')
+```
+
+## Advance Usage
+
 #### Prepare Kubernetes
 1) Make sure the apiserver has been started with `--authorization-mode=RBAC`
 
@@ -15,7 +35,7 @@ monitor Kubernetes clusters with Bluemedora's products.
 
 #### Deploy LPU
 Deploy and retrieve the bearer token
-```
+```sh
 kubectl create -f bluemedora-lpu/
 kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep bluemedora | awk '{print $1}')
 ```
