@@ -5,8 +5,7 @@ monitor Kubernetes clusters with Bluemedora's products.
 ## Usage
 
 The process below should work for most customers. 
-
-1) Verify you are pointed to the correct cluster and your kubectl environemtn is setup properly
+1) Verify you are pointed to the correct cluster and your kubectl environment is setup properly
 ```sh
 kubectl cluster-info
 ```
