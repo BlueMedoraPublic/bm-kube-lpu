@@ -17,7 +17,7 @@ kubectl apply -f https://raw.githubusercontent.com/BlueMedoraPublic/bm-kube-lpu/
 kubectl apply -f https://raw.githubusercontent.com/BlueMedoraPublic/bm-kube-lpu/master/bluemedora-lpu/bm-rolebinding.yaml
 kubectl apply -f https://raw.githubusercontent.com/BlueMedoraPublic/bm-kube-lpu/master/bluemedora-lpu/bm-serviceaccount.yaml
 ```
-2) Otabin the bearer token for the service account to use when setting up the source within Bindplane or vROps
+3) Obtain the bearer token for the service account to use when setting up the source within Bindplane or vROps
 ```sh
 kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep bluemedora | awk '{print $1}')
 ```
